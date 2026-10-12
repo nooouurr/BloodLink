@@ -1,29 +1,105 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.footer {
-  
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #FF0018;
-   color: white;
-   text-align: center;
-   height:50px;
-}
+    .blood-footer {
+        width: 100%;
+        height: 52px;
+        padding: 0 4%;
+        background: linear-gradient(110deg, #650016, #800020);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .footer-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer-center p {
+        margin: 0;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .footer-heart {
+        color: #ff526b;
+    }
+
+    .footer-socials {
+        position: absolute;
+        right: 4%;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+    }
+
+    .footer-socials a {
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .footer-socials a:hover {
+        color: #ff7186;
+    }
+
+    @media (max-width: 600px) {
+        .blood-footer {
+            height: auto;
+            min-height: 70px;
+            padding: 12px;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-socials {
+            position: static;
+            height: auto;
+            gap: 20px;
+        }
+
+        .footer-center p {
+            font-size: 11px;
+        }
+    }
 </style>
-</head>
-<body>
 
-<div class="footer">
-  <p>BloodLink System
-      <br>
-      Made In Tunisia &copy; 2026
-  </p>
+<footer class="blood-footer">
+    <div class="footer-center">
+        <p>BloodLink System</p>
+        <span>•</span>
+        <p>
+            Made with <span class="footer-heart">&hearts;</span>
+            in Tunisia &copy; 2026
+        </p>
+    </div>
 
-</div>
+    <div class="footer-socials">
+        <a href="https://www.facebook.com/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
 
-</body>
-</html> 
+        <a href="https://www.instagram.com/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://twitter.com/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </div>
+</footer>

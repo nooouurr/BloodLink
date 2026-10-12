@@ -1,70 +1,126 @@
+{% load static %}
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
 
-  <style type="text/css">
-    .bs-example {
-      margin: 0px;
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    }
+    <style>
+        .blood-navbar {
+            background: linear-gradient(110deg, #650016, #8d001f);
+            padding: 12px 5%;
+            box-shadow: 0 4px 18px rgba(60, 0, 15, 0.18);
+        }
 
-    .navbar-brand {
-      font-size: 20px;
-      font-family: sans-serif;
+        .blood-navbar .navbar-brand {
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff !important;
+        }
 
-    }
-  </style>
+        .blood-navbar .navbar-brand i {
+            color: #ff526b;
+            margin-right: 6px;
+        }
+
+        .blood-navbar .navbar-nav .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff !important;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 11px 14px !important;
+            margin-left: 5px;
+            border-radius: 10px;
+            transition: background 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        .blood-navbar .navbar-nav .nav-link:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-1px);
+        }
+
+        .blood-navbar .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.4);
+            padding: 7px 10px;
+        }
+
+        .blood-navbar .navbar-toggler:focus {
+            outline: none;
+        }
+
+        @media (max-width: 767px) {
+            .blood-navbar {
+                padding: 10px 5%;
+            }
+
+            .blood-navbar .navbar-brand {
+                font-size: 22px;
+            }
+
+            .blood-navbar .navbar-nav .nav-link {
+                margin: 3px 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top blood-navbar">
+        <a href="/" class="navbar-brand">
+            <i class="fas fa-heartbeat"></i>BloodLink
+        </a>
 
+        <button type="button"
+                class="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-
-  <div class="bs-example">
-    <nav style="background-color: #FF0018;" class="navbar navbar-expand-md navbar-dark fixed-top">
-      <a href="/" class="navbar-brand"><i class="fas fa-heartbeat"></i>&nbsp; BloodLink</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-
-
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="/"><i class="fas fa-home"></i>&nbsp; Home</i></a>
+                    <a class="nav-link" href="/">
+                        <i class="fas fa-home"></i> Home
+                    </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="/patient/patientlogin"><i class="fas fa-procedures"></i>&nbsp; Patient</i></a>
+                    <a class="nav-link" href="/patient/patientlogin">
+                        <i class="fas fa-procedures"></i> Patient
+                    </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="/donor/donorlogin"><i class="fas fa-user"></i>&nbsp; Donor</i></a>
+                    <a class="nav-link" href="/donor/donorlogin">
+                        <i class="fas fa-user"></i> Donor
+                    </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="/adminlogin"><i class="fas fa-user-shield"></i>&nbsp; Admin</i></a>
+                    <a class="nav-link" href="/adminlogin">
+                        <i class="fas fa-user-shield"></i> Admin
+                    </a>
                 </li>
-                
             </ul>
         </div>
-
-
-
-
-      </div>
     </nav>
-  </div>
-
-
 </body>
-
 </html>

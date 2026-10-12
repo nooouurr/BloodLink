@@ -1,43 +1,489 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    html, body{ height: 100%; margin: 0; overflow: hidden; }
-    body{ display: flex; flex-direction: column; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodLink | Every Drop Counts</title>
 
-    .hero{
-      position: relative;
-      flex: 1;              /* prend tout l'espace entre navbar et footer */
-      min-height: 0;
-    }
-    .hero img{
-      width: 100%;
-      height: 100%;
-      object-position: center;
-      display: block;
-    }
-    .hero::after{
-      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 35%;
-      background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
-      pointer-events: none;
-    }
-    .hero-quote{
-      position: absolute; left: 0; right: 0; bottom: 20px; z-index: 2;
-      margin: 0; padding: 0 20px; text-align: center; color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-    }
-  </style>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fff;
+            color: #20212b;
+            padding-top: 75px;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 55px 5% 125px;
+            background: linear-gradient(
+                110deg,
+                #ffffff 0%,
+                #fff7f7 48%,
+                #fde7e9 100%
+    );
+}
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 48%;
+            max-width: 650px;
+}
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #a10c27;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 38px;
+            height: 3px;
+            background: #ed1735;
+            border-radius: 5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 70px);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            font-weight: 800;
+            margin-bottom: 22px;
+            color: #191b25;
+        }
+
+        .hero h1 span {
+            color: #e5092d;
+        }
+
+        .hero-description {
+            max-width: 490px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #666875;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-custom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            min-height: 52px;
+            padding: 0 23px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary-custom {
+            color: white !important;
+            background: #e5092d;
+            box-shadow: 0 8px 20px rgba(229, 9, 45, 0.18);
+        }
+
+        .btn-primary-custom:hover {
+            background: #b80724;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-custom {
+            color: #d90b2c !important;
+            border: 1.5px solid #e5092d;
+            background: white;
+        }
+
+        .btn-outline-custom:hover {
+            color: white !important;
+            background: #e5092d;
+            transform: translateY(-3px);
+        }
+
+        /* HERO IMAGE */
+        .hero-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 49%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 48% 0 0 48% / 70% 0 0 70%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 247, 247, 0.15),
+                transparent 40%
+            );
+        }
+
+        /* FEATURE SECTION */
+        .features {
+            position: relative;
+            z-index: 3;
+            padding: 40px 7% 65px;
+            background: #fff;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            font-weight: 800;
+            color: #20212b;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 span {
+            color: #e5092d;
+        }
+
+        .section-heading p {
+            color: #777986;
+            font-size: 15px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .feature-card {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            padding: 27px 22px;
+            min-height: 155px;
+            border: 1px solid #f2eeee;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 10px 35px rgba(60, 20, 30, 0.06);
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 38px rgba(120, 20, 40, 0.12);
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #fff0f2;
+            color: #e5092d;
+            font-size: 25px;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h3 {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 9px;
+            color: #242530;
+        }
+
+        .feature-text p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #777986;
+            margin: 0;
+        }
+
+        .feature-arrow {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 37px;
+            height: 37px;
+            border-radius: 50%;
+            background: #fff0f2;
+            color: #e5092d;
+            transition: all 0.25s ease;
+        }
+
+        .feature-card:hover .feature-arrow {
+            color: white;
+            background: #e5092d;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1000px) {
+            .hero {
+                padding: 45px 5% 115px;
+                min-height: 470px;
+            }
+
+            .hero-content {
+                width: 55%;
+            }
+
+            .hero-image {
+                width: 52%;
+            }
+
+            .features {
+                position: relative;
+                z-index: 3;
+                margin-top: -95px;
+                padding: 0 4% 45px;
+                background: transparent;
+                }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                padding: 22px 18px;
+                min-height: 145px;
+                border: 1px solid #f2eeee;
+                border-radius: 18px;
+                background: rgba(255, 255, 255, 0.97);
+                box-shadow: 0 10px 35px rgba(60, 20, 30, 0.08);
+                transition: transform 0.25s ease,
+                            box-shadow 0.25s ease;
+            }
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .hero {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 42px 6% 25px;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+                letter-spacing: -1px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-image {
+                position: relative;
+                width: 100%;
+                height: 260px;
+                margin-top: 30px;
+                border-radius: 20px;
+            }
+
+            .btn-custom {
+                padding: 0 17px;
+                font-size: 13px;
+            }
+
+            .features {
+                margin-top: 0;
+                padding: 30px 6% 40px;
+                background: #fff;
+            }
+
+            .section-heading h2 {
+                font-size: 25px;
+            }
+
+            .feature-card {
+                padding: 20px 15px;
+                gap: 12px;
+            }
+
+            .feature-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 21px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  {% include "blood/navbar.html" %}
 
-  <section class="hero">
-    <img src="{% static 'image/acceuil.png' %}" alt="Don de sang">
-    <p class="lead hero-quote">“Opportunities knock the door sometimes, so don’t let it go and donate blood.”</p>
-  </section>
+    {% include "blood/navbar.html" %}
 
-  {% include "blood/footer.html" %}
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">
+                    Together for a healthier tomorrow
+                </div>
+
+                <h1>
+                    Every<br>
+                    <span>Drop</span> Counts
+                </h1>
+
+                <p class="hero-description">
+                    Connect blood donors with patients in need.
+                    Every donation can make a difference and help save a life.
+                    Join our community and be someone's hero.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="/patient/patientlogin"
+                       class="btn-custom btn-primary-custom">
+                        <i class="fas fa-search"></i>
+                        Find a Donor
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                    <a href="/donor/donorlogin"
+                       class="btn-custom btn-outline-custom">
+                        <i class="fas fa-user-plus"></i>
+                        Become a Donor
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+    <img src="{% static 'image/acceuil.jpg' %}"
+         alt="Blood donation and solidarity">
+    <div class="image-overlay"></div>
+</div>
+        </section>
+
+        <section class="features">
+            <div class="section-heading">
+                <h2>Small Action, <span>Big Impact</span></h2>
+                <p>Discover how BloodLink helps connect people and save lives.</p>
+            </div>
+
+            <div class="feature-grid">
+                <a href="/patient/patientlogin" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+
+                    <div class="feature-text">
+                        <h3>Find Blood</h3>
+                        <p>Connect with the donor community when blood is needed.</p>
+                    </div>
+
+                    <div class="feature-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <a href="/donor/donorlogin" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+
+                    <div class="feature-text">
+                        <h3>Become a Donor</h3>
+                        <p>Join our community and help make a real difference.</p>
+                    </div>
+
+                    <div class="feature-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <a href="/patient/patientlogin" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+
+                    <div class="feature-text">
+                        <h3>Emergency Support</h3>
+                        <p>Access the patient area to manage your blood requests.</p>
+                    </div>
+
+                    <div class="feature-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    {% include "blood/footer.html" %}
+
 </body>
 </html>
